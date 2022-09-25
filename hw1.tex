@@ -1,0 +1,311 @@
+\documentclass[12pt, fullpage,letterpaper]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{url}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xspace}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{tabularx}
+\newcommand{\semester}{Fall 2022}
+\newcommand{\assignmentId}{1}
+\newcommand{\releaseDate}{6 Sep, 2022}
+\newcommand{\dueDate}{11:59pm, 23 Sep, 2022}
+
+\newcommand{\bx}{{\bf x}}
+\newcommand{\bw}{{\bf w}}
+
+\title{CS 5350/6350: Machine Learining \semester}
+\author{Homework \assignmentId}
+\date{Handed out: \releaseDate\\
+	Due: \dueDate}
+
+
+\title{CS 5350/6350: Machine Learining \semester}
+\author{Homework \assignmentId}
+\date{Handed out: \releaseDate\\
+  Due date: \dueDate}
+
+\begin{document}
+\maketitle
+
+\input{emacscomm}
+{\footnotesize
+	\begin{itemize}
+		\item You are welcome to talk to other members of the class about
+		the homework. I am more concerned that you understand the
+		underlying concepts. However, you should write down your own
+		solution. Please keep the class collaboration policy in mind.
+		
+		\item Feel free discuss the homework with the instructor or the TAs.
+		
+		\item Your written solutions should be brief and clear. You need to
+		show your work, not just the final answer, but you do \emph{not}
+		need to write it in gory detail. Your assignment should be {\bf no
+			more than 20 pages}. Not that you do not need to include the problem description. Every extra page will cost a point.
+		
+		\item Handwritten solutions will not be accepted.
+		
+		
+		\item {\em Your code should run on the CADE machines}. You should
+		include a shell script, {\tt run.sh}, that will execute your code
+		in the CADE environment. Your code should produce similar output
+		to what you include in your report.
+		
+		You are responsible for ensuring that the grader can execute the
+		code using only the included script. If you are using an
+		esoteric programming language, you should make sure that its
+		runtime is available on CADE.
+		
+		\item Please do not hand in binary files! We will {\em not} grade
+		binary submissions.
+		
+		\item The homework is due by \textbf{midnight of the due date}. Please submit
+		the homework on Canvas.
+		
+		\item Note the bonus questions are for \textbf{both 5350 and 6350} students. If a question is mandatory for 6350, we will highlight it explicitly. 
+		
+	\end{itemize}
+}
+
+
+\section{Decision Tree [40 points + 10 bonus]}
+\begin{table}[h]
+	\centering
+	\begin{tabular}{cccc|c}
+		$x_1$ & $x_2$ & $x_3$ & $x_4$ & $y$\\ 
+		\hline\hline
+		0 & 0 & 1 & 0 & 0 \\ \hline
+		0 & 1 & 0 & 0 & 0 \\ \hline
+		0 & 0 & 1 & 1 & 1 \\ \hline
+		1 & 0 & 0 & 1 & 1 \\ \hline
+		0 & 1 & 1 & 0.& 0\\ \hline
+		1 & 1 & 0 & 0 & 0\\ \hline
+		0 & 1 & 0 & 1 & 0\\ \hline
+	\end{tabular}
+	\caption{Training data for a Boolean classifier}
+	%\caption{Training data for the alien invasion problem.}\label{tb-alien-train}
+\end{table}
+
+\begin{enumerate}
+\item~[7 points] Decision tree construction. 
+\begin{enumerate}
+\item~[5 points] Use the ID3 algorithm with information gain to learn a decision tree from the training dataset in Table 1. Please list every step in your tree construction, including the data subsets, the attributes, and how you calculate the information gain of each attribute and how you split the dataset according to the selected attribute. Please also give a full structure of the tree. You can manually  draw the tree structure,  convert the picture into a PDF/EPS/PNG/JPG format and include it in your homework submission; or instead, you can  represent the tree with a conjunction of prediction rules as we discussed in the lecture. 
+\item~[2 points] Write the boolean function which your decision tree represents. Please use a table to describe the function --- the columns are the input variables and label, \ie $x_1$, $x_2$, $x_3$, $x_4$ and $y$; the rows are different input and  function values. 
+`\end{enumerate}
+\item~[17 points] Let us use a training dataset to learn a decision tree about whether to play tennis (\textbf{Page 43, Lecture: Decision Tree Learning}, accessible by clicking the link \href{http://www.cs.utah.edu/~zhe/teach/pdf/decision-trees-learning.pdf}{http://www.cs.utah.edu/\textasciitilde zhe/teach/pdf/decision-trees-learning.pdf}). In the class, we have shown how to use information gain to construct the tree in ID3 framework.  
+\begin{enumerate}
+	\item~[7 points] Now, please use majority error (ME) to calculate the gain, and select the best feature to split the data in ID3 framework. As in problem 1, please list every step in your tree construction,  the attributes,  how you calculate the gain of each attribute and how you split the dataset according to the selected attribute. Please also give a full structure of the tree.
+	\item~[7 points] Please use gini index (GI) to calculate the gain, and conduct tree learning with ID3 framework. List every step and the tree structure.
+	\item~[3 points] Compare the two trees you just created with the one we built in the class (see Page 62 of the lecture slides). Are there any differences? Why? 
+\end{enumerate}
+
+\begin{table}[t]
+\centering
+    \caption{Results for Car datasets.}
+      \centering
+  \resizebox{0.8\columnwidth}{!}{
+    \begin{tabular}{c c c c||c c c}\hline
+        Depth & \multicolumn{3}{c}{Train}&\multicolumn{3}{c}{Test}\\ \cline{2-7}
+        &{Entropy} &{Gini} &{MajorityError} &{Entropy} &{Gini} &{MajorityError} \\ 
+        % & \multicolumn{4}{c}{Time(seconds)}\\ \cline{2-5}
+        \hline
+depth-1&0.302&0.302&0.302&0.297&0.297&0.297\\
+depth-2&0.222&0.222&0.222&0.223&0.223&0.223\\
+depth-3&0.181&0.181&0.181&0.196&0.196&0.196\\
+depth-4&0.082&0.082&0.082&0.151&0.151&0.151\\
+depth-5&0.027&0.027&0.027&0.081&0.081&0.081\\
+depth-6&0.0&0.0&0.0&0.081&0.081&0.081\\
+        % \bottomrule
+        \hline
+        \end{tabular}}
+    \label{tab:performance}
+\end{table}
+
+
+\begin{table}[t]
+\centering
+    \caption{Results for Bank datasets with Unknown as features.}
+      \centering
+  \resizebox{0.8\columnwidth}{!}{
+    \begin{tabular}{c c c c||c c c}\hline
+        Depth & \multicolumn{3}{c}{Train}&\multicolumn{3}{c}{Test}\\ \cline{2-7}
+        &{Entropy} &{Gini} &{MajorityError} &{Entropy} &{Gini} &{MajorityError} \\ 
+        % & \multicolumn{4}{c}{Time(seconds)}\\ \cline{2-5}
+        \hline
+depth-1&0.119&0.109&0.109&0.125&0.117&0.117\\
+depth-2&0.106&0.105&0.105&0.111&0.11&0.11\\
+depth-3&0.101&0.097&0.097&0.107&0.11&0.11\\
+depth-4&0.08&0.077&0.077&0.114&0.116&0.116\\
+depth-5&0.062&0.063&0.063&0.122&0.123&0.123\\
+depth-6&0.048&0.049&0.049&0.133&0.132&0.132\\
+depth-7&0.037&0.037&0.037&0.135&0.135&0.135\\
+depth-8&0.029&0.029&0.029&0.142&0.142&0.142\\
+depth-10&0.018&0.018&0.018&0.151&0.151&0.151\\
+depth-13&0.013&0.013&0.013&0.154&0.154&0.154\\
+depth-16&0.013&0.013&0.013&0.154&0.154&0.154\\
+        % \bottomrule
+        \hline
+        \end{tabular}}
+    \label{tab:performance}
+\end{table}
+\begin{table}[t]
+\centering
+    \caption{Results for Bank datasets with Unknown filled by the most common attribute of features.}
+      \centering
+  \resizebox{0.8\columnwidth}{!}{
+    \begin{tabular}{c c c c||c c c}\hline
+        Depth & \multicolumn{3}{c}{Train}&\multicolumn{3}{c}{Test}\\ \cline{2-7}
+        &{Entropy} &{Gini} &{MajorityError} &{Entropy} &{Gini} &{MajorityError} \\ 
+        % & \multicolumn{4}{c}{Time(seconds)}\\ \cline{2-5}
+        \hline
+depth-1&0.119&0.109&0.109&0.125&0.117&0.117\\
+depth-2&0.106&0.105&0.105&0.111&0.11&0.11\\
+depth-3&0.102&0.101&0.101&0.109&0.107&0.107\\
+depth-4&0.088&0.088&0.088&0.117&0.115&0.115\\
+depth-5&0.07&0.072&0.072&0.122&0.116&0.116\\
+depth-6&0.056&0.057&0.057&0.131&0.126&0.126\\
+depth-7&0.044&0.046&0.046&0.139&0.135&0.135\\
+depth-8&0.037&0.037&0.037&0.141&0.138&0.138\\
+depth-10&0.024&0.024&0.024&0.149&0.146&0.146\\
+depth-13&0.018&0.018&0.018&0.152&0.148&0.148\\
+depth-16&0.018&0.018&0.018&0.152&0.148&0.148\\
+        % \bottomrule
+        \hline
+        \end{tabular}}
+    \label{tab:performance}
+\end{table}
+\item~[16 points] Continue with the same training data in Problem 2. Suppose before the tree construction, we receive one more training instance where Outlook's value is missing: \{Outlook: Missing, Temperature: Mild, Humidity: Normal, Wind: Weak, Play: Yes\}. 
+\begin{enumerate}
+\item~[3 points] Use the most common value in the training data as the missing  value, and calculate the information gains of the four features. Note that if there is a tie for the most common value, you can choose any value in the tie.  Indicate the best feature. 
+\item~[3 points] Use the most common value among the  training instances with the same label, namely, their attribute "Play" is "Yes", and calculate the information gains of the four features. Again if there is a tie, you can choose any value in the tie. Indicate the best feature.
+\item~[3 points] Use the fractional counts to infer the feature values, and then calculate the information gains of the four features. Indicate the best feature.
+\item~[7 points] Continue with the fractional examples, and build the whole free with information gain. List every step and the final tree structure.  
+
+\end{enumerate}
+\item ~[\textbf{Bonus question 1}]~[5 points].  Prove that the information gain is always non-negative.  That means, as long as we split the data, the purity will never get worse! (Hint: use convexity)
+\item ~[\textbf{Bonus question 2}]~[5 points].  We have discussed how to use decision tree for regression (i.e., predict numerical values) --- on the leaf node, we simply use the average of the (numerical) labels as the prediction.  Now, to construct a regression tree, can you invent a gain to select the best attribute to split data in ID3 framework?
+
+\end{enumerate}
+
+\section{Decision Tree Practice [60 points]}
+\begin{enumerate}
+	\item~[5 Points] Starting from this assignment, we will build a light-weighted machine learning library. 
+To this end, you will first need to create a code repository in \href{https://github.com/}{Github.com}. Please refer to the short introduction in the appendix and the \href{https://guides.github.com/activities/hello-world/}{official tutorial} to create an account and repository. Please commit a README.md file in your repository, and write one sentence: "This is a machine learning library developed by \textbf{Your Name} for CS5350/6350 in University of Utah".  You can now create a first folder, "DecisionTree". Please leave the link to your repository in the homework submission. We will check if you have successfully created it. 
+
+
+\item~[30 points] We will implement a decision tree learning algorithm for car evaluation task. The dataset is from UCI repository(\url{https://archive.ics.uci.edu/ml/datasets/car+evaluation}). Please download the processed dataset (car.zip) from Canvas.  In this task, we have $6$ car attributes, and the label is the evaluation of the car. The attribute and label values are listed in the file ``data-desc.txt". All the attributes are categorical.  The training data are stored in the file ``train.csv'', consisting of $1,000$ examples. The test data are stored in ``test.csv'', and comprise $728$ examples. In both training and test datasets, attribute values are separated by commas; the file ``data-desc.txt''  lists the attribute names in each column. 
+\\
+
+\noindent Note: we highly recommend you to use Python for implementation, because it is very convenient to load the data and handle strings. For example, the following snippet reads the CSV file line by line and split the values of the attributes and the label into a list, ``terms''. You can also use ``dictionary'' to store the categorical attribute values. In the web are numerous tutorials and examples for Python. if you have issues, just google it!
+\begin{lstlisting}
+with open(CSVfile, 'r') as f:
+     for line in f:
+            terms = line.strip().split(',')
+            process one training example
+\end{lstlisting}
+\begin{enumerate}
+\item~[15 points] Implement the ID3 algorithm that supports, information gain,  majority error and gini index to select attributes for data splits. Besides, your ID3 should allow users to set the maximum tree depth. Note: you do not need to convert categorical attributes into binary ones and your tree can be wide here. 
+\item~[10 points] Use your implemented algorithm to learn decision trees from the training data. Vary the maximum  tree depth from $1$ to $6$  --- for each setting, run your algorithm to learn a decision tree, and use the tree to  predict both the training  and test examples. Note that if your tree cannot grow up to 6 levels, you can stop at the maximum level. Report in a table the average prediction errors on each dataset when you use information gain, majority error and gini index heuristics, respectively.
+
+\item~[5 points] What can you conclude by comparing the training errors and the test errors? 
+\end{enumerate}
+
+
+\item~[25 points] Next, modify your implementation a little bit to support numerical attributes. We will use a simple approach to convert a numerical feature to a binary one. We choose the media (NOT the average) of the attribute values (in the training set) as the threshold, and examine if the feature is bigger (or less) than the threshold. We will use another real dataset from UCI repository(\url{https://archive.ics.uci.edu/ml/datasets/Bank+Marketing}). This dataset contains $16$ attributes, including both numerical and categorical ones. Please download the processed dataset from Canvas (bank.zip).  The attribute and label values are listed in the file ``data-desc.txt". The training set is the file ``train.csv'', consisting of $5,000$ examples, and the test  ``test.csv'' with $5,000$ examples as well.  In both training and test datasets, attribute values are separated by commas; the file ``data-desc.txt''  lists the attribute names in each column. 
+\begin{enumerate}
+	\item~[10 points] Let us consider ``unknown'' as a particular attribute value, and hence we do not have any missing attributes for both training and test. Vary the maximum  tree depth from $1$ to $16$ --- for each setting, run your algorithm to learn a decision tree, and use the tree to  predict both the training  and test examples. Again, if your tree cannot grow up to $16$ levels, stop at the maximum level. Report in a table the average prediction errors on each dataset when you use information gain, majority error and gini index heuristics, respectively.
+	
+	\item~[10 points] Let us consider "unknown" as  attribute value missing. Here we simply complete it with the majority of other values of the same attribute in the training set.   Vary the maximum  tree depth from $1$ to $16$ --- for each setting, run your algorithm to learn a decision tree, and use the tree to  predict both the training  and test examples. Report in a table the average prediction errors on each dataset when you use information gain, majority error and gini index heuristics, respectively.
+	
+	
+	\item~[5 points] What can you conclude by comparing the training errors and the test errors, with different tree depths, as well as different ways to deal with "unknown" attribute values?
+\end{enumerate}
+\end{enumerate}
+
+\section*{Appendix}
+\section*{What is GitHub?}
+You may have contacted with GitHub long before you realized its existence, since a large part of open source code reside in GitHub nowadays. And whenever you google for some open source code snap, like code for a course project or a research paper, you would possibly be directed to GitHub. 
+
+GitHub, as well as  many of its competitor like GitLab and BitBucket, is a so-called code hosting website, to which you upload and manage your code. For many first time user of GitHub, it's quite confusing that there is another software called git. Don't be confused now, git is a version control software and is the core of all these website. It can help you track the development of your code and manage them in a very organized way. Git works on your own local computer as other normal softwares do. Github, however, is just a website, or by its name, a hub, that you keep the code, just like a cloud storage space. How do we upload our code to GitHub? Yes, by Git!( or its variants). They are so dependent that when people say using GitHub, they mean they use git to manage their code, and keep their code in GitHub. That been said, as a stand-alone tool, git could  work perfectly on your local computer without Internet access, as long as your do not want to keep your code on-line and access them everywhere, or share them with others. 
+
+
+
+\section*{Core concepts and operations of GitHub}
+Here we only state the basic concepts of GitHub and git. Specific commands vary slightly depending on the Platforms ( Mac/Linux/WIN10) and command-line/GUI versions. Please refer to the link provided below for concrete examples and video tutorials. As you understand the whole working flow, those commands should be easy and straightforward to use. 
+
+There are two major parts we need to know about github. The on-line part of GitHub and local part of git. We start from GitHub.
+
+\subsection*{GitHub}
+If you have never had a GitHub account, please follow this link to create one. It also provides tutorial on basic operations of GitHub.
+
+
+\href{https://guides.github.com/activities/hello-world/}{https://guides.github.com/activities/hello-world/}\\
+
+Note that now you can create a private repository without paying to GitHub. In principle, we encourage you to create public repository. But if you somehow prefer a private one( i.e., can't be access by others), you must add TA's account as the collaborators in order to check your work.  
+
+These are some key concept you should know about:
+\begin{itemize}
+	\item Repository: Repository is the place where you keep your whole project, including every version, every branch of the code. For example, you will need to create a repository named Final-Project (or other suitable name), which will contain all your code, report and results.
+	
+	\item Branch: Branch allows you (and your partners) to developed different version of a repository at the same time. For example, you and your partner are working on the final project. Suddenly, you want to try some crazy algorithm but not sure if it would work. Now you create a new branch of the repository and continue your trying without breaking the original (usually called master) branch. If successful, you then merge this branch with the master branch. Otherwise, you can simply give up and delete this branch, and nothing in the master branch will be affected. 
+	
+	\item Pull Request: This is the heart of GitHub. Don't mistake this with PULL we will talk about later. Pull Request means when you finish your branch( like the crazy algorithm above), you make a request that the owner or manager of master branch to review your code, and merge them into the master branch. If accepted, any changes you make in your branch will also be reflected in the master branch. As the manager of master branch, you should also be careful to check the code about to be merged and address any potential conflicts this merge may introduce. 
+	
+	\item Merge: This operation means to merge two different branches into a single one. Any inconsistency must be addressed before merging. 
+\end{itemize}
+
+\subsection*{git}
+
+
+This link provides installation guides and video tutorial for basic git operation.
+
+\href{https://git-scm.com/doc}{https://git-scm.com/doc}\\
+
+This is a cheating-sheet for common commands of git.
+
+\href{https://confluence.atlassian.com/bitbucketserver/basic-git-commands-776639767.html}{https://confluence.atlassian.com/bitbucketserver/basic-git-commands-776639767.html}\\
+
+As said before, you can always use git in a local repository. More frequently, we link this repository to the one you create in GitHub and then you can use git to push (upload) you code to and pull (fetch) them from GitHub. Beside the original command-line interface, there are many softwares with nice GUI to access the functionalities of git, such as GitHub Desktop and Source Tree. 
+
+
+There are also some core operations you should know about:
+\begin{itemize}
+	\item clone: Download/Copy a repository from GitHub to your local disk. This would fetch everything of this repository. This is the most commonly used command to download someone else's code from GitHub.
+	
+	\item init: Initialize current fold a to local repository, which will generate some hidden files to track the changes.
+	
+	\item add: By default, no files in the repository folder are marked to be tracked. When you want to track the change of a file, use add operation to add this file to the tracking list. Normally, we only track the source code and report of our project, and we DON'T track datasets. As the datasets  never change once downloaded and are usually big. 
+	
+	\item commit: This is the most frequently used git operation. Commit means to make a LOCALLY check point. For example, you have done some change to the project, like adding a new  complex function, and it works well. Then you can commit with a comment "adding new function, test well ***". Later when you try to modify this function but fail, you can roll back to this check point and start over. Hence you do not need to  many copies before modification. 
+	
+	\item checkout: After you commit checkpoints, you can use checkout to roll back to these checkpoints in case you mess up.
+	
+	\item push: When you complete current task and make check very thing is good, you use push( after commit) to upload the local repository to GitHub. 
+	
+	\item pull: Fetch the content from GitHub. This is similar to Clone. But it only fetches content designated by the  parameters to the pull command.    
+\end{itemize}
+
+\subsection*{Work Flow}
+With concepts and operations introduced above, the work flow of using GitHub for a project is as follows:
+\begin{enumerate}
+	\item Create a repository in GitHub.
+	\item Create a local repository in your local computer and link it to the remote repository in GitHub.
+	\item Create source code files and add them to the tracking list.
+	\item Edit, modify and test your code. Commit and checkout whenever mess up.
+	\item Push your code to GitHub.
+\end{enumerate}
+
+If you start your work with an existed GitHub repository (like  the one created by your partner), Just replace steps 1 to 3 by pull or clone. \\
+
+You can play around with GitHub by creating some random  repositories and files to track. 
+Basic operation introduced above and in the links are more than enough to complete this course. If are you have further interest to master GitHub, there are several excellent on-line courses provided by Coursera and Udacity. Many tutorials are provided in the web as well. 
+
+
+\end{document}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

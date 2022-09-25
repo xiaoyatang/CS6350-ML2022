@@ -1,0 +1,41 @@
+************************************************** Car
+depth-1&0.302&0.302&0.302&0.297&0.297&0.297\\
+depth-2&0.222&0.222&0.222&0.223&0.223&0.223\\
+depth-3&0.181&0.181&0.181&0.196&0.196&0.196\\
+depth-4&0.082&0.082&0.082&0.151&0.151&0.151\\
+depth-5&0.027&0.027&0.027&0.081&0.081&0.081\\
+depth-6&0.0&0.0&0.0&0.081&0.081&0.081\\
+************************************************** Bank while treat unknown as feature
+/home/taoyang/research/research_everyday/homework/CS6350/HW1/submission/submission.py:380: DeprecationWarning: `np.int` is a deprecated alias for the builtin `int`. To silence this warning, use `int` by itself. Doing this will not modify any behavior and is safe. When replacing `np.int`, you may wish to use e.g. `np.int64` or `np.int32` to specify the precision. If you wish to review your current use, check the release note link for additional information.
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  col=data_train.raw_data[:,dim].astype(np.int)
+/home/taoyang/research/research_everyday/homework/CS6350/HW1/submission/submission.py:383: DeprecationWarning: `np.int` is a deprecated alias for the builtin `int`. To silence this warning, use `int` by itself. Doing this will not modify any behavior and is safe. When replacing `np.int`, you may wish to use e.g. `np.int64` or `np.int32` to specify the precision. If you wish to review your current use, check the release note link for additional information.
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  testcol=data_test.raw_data[:,dim].astype(np.int)
+depth-1&0.119&0.109&0.109&0.125&0.117&0.117\\
+depth-2&0.106&0.105&0.105&0.111&0.11&0.11\\
+depth-3&0.101&0.097&0.097&0.107&0.11&0.11\\
+depth-4&0.08&0.077&0.077&0.114&0.116&0.116\\
+depth-5&0.062&0.063&0.063&0.122&0.123&0.123\\
+depth-6&0.048&0.049&0.049&0.133&0.132&0.132\\
+depth-7&0.037&0.037&0.037&0.135&0.135&0.135\\
+depth-8&0.029&0.029&0.029&0.142&0.142&0.142\\
+depth-10&0.018&0.018&0.018&0.151&0.151&0.151\\
+depth-13&0.013&0.013&0.013&0.154&0.154&0.154\\
+depth-16&0.013&0.013&0.013&0.154&0.154&0.154\\
+************************************************** Bank while convert unknown to the most common atrribute of that feature
+blue-collar
+secondary
+cellular
+failure
+depth-1&0.119&0.109&0.109&0.125&0.117&0.117\\
+depth-2&0.106&0.105&0.105&0.111&0.11&0.11\\
+depth-3&0.102&0.101&0.101&0.109&0.107&0.107\\
+depth-4&0.088&0.088&0.088&0.117&0.115&0.115\\
+depth-5&0.07&0.072&0.072&0.122&0.116&0.116\\
+depth-6&0.056&0.057&0.057&0.131&0.126&0.126\\
+depth-7&0.044&0.046&0.046&0.139&0.135&0.135\\
+depth-8&0.037&0.037&0.037&0.141&0.138&0.138\\
+depth-10&0.024&0.024&0.024&0.149&0.146&0.146\\
+depth-13&0.018&0.018&0.018&0.152&0.148&0.148\\
+depth-16&0.018&0.018&0.018&0.152&0.148&0.148\\
