@@ -1,0 +1,17 @@
+************************************************** kaggle while treat unknown as feature
+['entropy', 'Gini', 'MajorityError']
+depth-1&0.219\\
+depth-2&0.179\\
+************************************************** kaggle while treat unknown as feature
+['entropy', 'Gini', 'MajorityError']
+depth-1&0.241&0.241&0.219\\
+depth-2&0.179&0.179&0.179\\
+************************************************** kaggle while treat unknown as feature
+['entropy', 'Gini', 'MajorityError']
+depth-1&0.241&0.241&0.219\\
+depth-2&0.179&0.179&0.179\\
+depth-3&0.166&0.166&0.166\\
+depth-4&0.147&0.147&0.148\\
+depth-5&0.13&0.13&0.131\\
+depth-6&0.116&0.116&0.117\\
+depth-7&0.104&0.104&0.105\\
