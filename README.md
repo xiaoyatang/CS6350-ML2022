@@ -3,4 +3,6 @@ This is a machine learning library developed by Xiaoya Tang for CS5350/6350 in U
 Run the 'run.sh' in every part to run the .py files.
 
 Add two algorithms: linear Regression and Perceptron.
-The Ensemble learning is not finished yet, but would finish it soon.
+The Ensemble learning is not finished yet, but would finish it soon.  
+
+Add SVMs.
