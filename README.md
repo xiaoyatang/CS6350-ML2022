@@ -6,3 +6,7 @@ Add two algorithms: linear Regression and Perceptron.
 The Ensemble learning is not finished yet, but would finish it soon.  
 
 Add SVMs.
+
+Add Logistic regression. Just run the "run.sh" to run the logistic_regression.py.  
+
+Add Neural network. Follow the readme.md to run.
